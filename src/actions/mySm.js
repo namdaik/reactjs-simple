@@ -1,0 +1,46 @@
+import callApi from './../utils/apiCaller';
+
+export const actFetchSmRequest = () => {
+    return dispatch => {
+        return callApi('Sm', 'GET', null).then(res => {
+            dispatch(actFetchSm(res.data));
+        });
+    };
+}
+
+export const actFetchSm = (Sm) => {
+    return {
+        type : 'FETCH_Sm',
+        Sm
+    }
+}
+
+export const actDeleteProductRequest = (id) => {
+    return dispatch => {
+        return callApi(`Sm/${id}`, 'DELETE', null).then(res =>{
+            dispatch(actDeleteProduct(id));
+        })
+    }
+}
+
+export const actDeleteProduct = (id) => {
+    return {
+        type : 'DELETE_PRODUCT',
+        id
+    }
+}
+
+export const actGetUrlMySmRequest = (path) => {
+    return dispatch => {
+        return callApi(path, 'GET', ).then(res => {
+            dispatch(actGetUrlMySm(res.data));
+        });
+    }
+}
+
+export const actGetUrlMySm = (html) => {
+    return {
+        type : 'GET_URL_MY_SM',
+        html
+    }
+}

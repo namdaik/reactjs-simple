@@ -13,3 +13,20 @@ export const createPost = title => ({
      title,
    },
 });
+
+// export const getSetting = () => ({
+//    type: 'GET_SETTING',
+//    setting: {
+//      tiny_path: 'tiny_path'
+//    },
+// });
+
+export const getSettings = ()=> {
+	return  {
+	    type: 'GET_SETTING',
+	    settings: {
+	     tiny_path: 'tiny_path',
+	      tiny_path2: 'tiny_path'
+	   }
+	};
+}

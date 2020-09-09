@@ -9,6 +9,7 @@ import PostIndex from './componentsPostExample/PostIndex';
 import reducers from "./reducers";
 import { Provider } from 'react-redux';
 import { createStore } from "redux";
+import MySmIndex from './MySmComponents/MySmIndex';
 
 {/*import ExmpleView from './views/example/ExampleView';*/}
 
@@ -24,7 +25,7 @@ const store = createStore(reducers);
 
 ReactDOM.render(
   <Provider store={store}>
-    <PostIndex />
+    <MySmIndex />
   </Provider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
