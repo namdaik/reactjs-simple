@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 //Import action dùng để dispatch
 import {getSettings} from '../actions/index';
 import Footer from './base/footer';
+import TextLinkGray from './units/TextLinkGray';
+import Breadcrumb from './units/Breadcrumb';
 
 class MySmIndex extends Component {
 	constructor(props) {

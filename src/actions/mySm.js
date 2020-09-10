@@ -20,7 +20,7 @@ export const actDeleteProductRequest = (id) => {
         return callApi(`Sm/${id}`, 'DELETE', null).then(res =>{
             dispatch(actDeleteProduct(id));
         })
-    }
+    };
 }
 
 export const actDeleteProduct = (id) => {
@@ -33,14 +33,10 @@ export const actDeleteProduct = (id) => {
 export const actGetUrlMySmRequest = (path) => {
     return dispatch => {
         return callApi(path, 'GET', ).then(res => {
-            dispatch(actGetUrlMySm(res.data));
+            dispatch({
+                type : 'GET_URL_MY_SM',
+                html
+            });
         });
-    }
-}
-
-export const actGetUrlMySm = (html) => {
-    return {
-        type : 'GET_URL_MY_SM',
-        html
     }
 }
