@@ -2,11 +2,11 @@ import React, { Component } from "react";
 //Import kết nối tới react-redux
 import {connect} from 'react-redux';
 //Import action dùng để dispatch
-import {getSettings} from '../actions/index';
-import Footer from './base/footer';
-import Robot2 from './units/Robot2';
-import TextLinkGray from './units/TextLinkGray';
+
+import Robot2 from '../units/Robot2';
+import TextLinkGray from '../units/TextLinkGray';
 import Breadcrumb from '../units/Breadcrumb';
+import ParseHtml from '../../utils/ParseHtml';
 
 class UrlContinue extends Component {
     constructor(props) {
@@ -14,24 +14,30 @@ class UrlContinue extends Component {
         //Khởi tạo một ref
      }
 
+    componentDidMount() {
+        var partHtml1 = new ParseHtml();
+        partHtml1.parseAll();
+    }
+
+    renderHeadings(Heading) {
+        if (!this.props[Heading]){
+            return '';
+        }
+        return  this.props[Heading].map((hItem, index) =>{
+          return <h1 key={index.toString()}>{hItem}</h1>;
+        })(Heading);      
+    }
+
     render() {
         return (
           <>
             <Robot2 link='dsds'/>
             <Breadcrumb breadcrumb={[{link : 1, name: 2}]} />
-            {this.props.image
-                <img src={this.props.image} alt="{{ $url->name }}">
+            {this.props.image !== 'Underfired' &&
+                <img src={this.props.image} alt="" />
             }
-            {this.props.h3.map((h3Item, index) => {
-                  this.props.children(person);
-                  return <h3 key={index}>{hItem}</h3>;
-                })
-            }
-            {this.props.h4.map((hItem, index) => {
-                  this.props.children(person);
-                  return <h4 key={index}>{hItem}</h4>;
-                })
-            }
+            {this.renderHeadings('h3')}
+            {this.renderHeadings('h4')}
             <TextLinkGray links={[{url : "qdq", name: "2323"}]}/>
           </>
         );
@@ -40,11 +46,6 @@ class UrlContinue extends Component {
 
 //Gán dispatch thành props
 const mapDispatchToProps = (dispatch) =>  {
-  return {
-    getSettings: () => {
-      dispatch(getSettings());
-    }
-  }
 }
  
 

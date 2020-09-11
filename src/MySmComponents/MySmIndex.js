@@ -7,6 +7,8 @@ import Footer from './base/footer';
 import TextLinkGray from './units/TextLinkGray';
 import Breadcrumb from './units/Breadcrumb';
 
+import UrlContinuePage from './page/UrlContinue';
+
 class MySmIndex extends Component {
 	constructor(props) {
 	    super(props);
@@ -21,6 +23,7 @@ class MySmIndex extends Component {
 	render() {
 	    return (
 	      <>
+	      	<UrlContinuePage />
 	        <Footer />
 	      </>
 	    );
