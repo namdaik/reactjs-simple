@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import Robot2 from '../units/Robot2';
 import TextLinkGray from '../units/TextLinkGray';
 import Breadcrumb from '../units/Breadcrumb';
-import ParseHtml from '../../utils/ParseHtml';
+import FakeContentUrl from '../../module/fake-content/FakeContentUrl';
 
 class UrlContinue extends Component {
     constructor(props) {
@@ -15,8 +15,8 @@ class UrlContinue extends Component {
      }
 
     componentDidMount() {
-        var partHtml1 = new ParseHtml();
-        partHtml1.parseAll();
+        var fakeContent = new FakeContentUrl();
+        fakeContent.parseAll();
     }
 
     renderHeadings(Heading) {

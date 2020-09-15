@@ -1,29 +1,31 @@
-import axios from 'axios';
-import * as Config from './../const';
-import callApi from './apiCaller';
+import callApi from '../api-call/apiCaller';
 
 export default class ParseHtml {
+    htmlBody = '';
+    path = '';
+    
 	constructor(path = '') {
 		this.path = path;
 	}
  	parseAll() {
- 		callApi(this.path).then(res => {
-    	   this.parse(res.data)
-    	return res.data;
-	 	});
+        return new Promise((resolve, reject) => {
+            callApi(this.path).then(res => {
+                resolve(this.parse(res.data));
+            });
+        });
+ 		
  	}
-    parse(html) {
-        var html = new DOMParser().parseFromString(html, 'text/html');
+    parse(htmlText) {
+        let html = new DOMParser().parseFromString(htmlText, 'text/html');
         this.htmlBody = html.getElementsByTagName('body')[0];
-        var headingElement = this.parseHeadingElements();
-        var pElement = this.getTextElementsByTag('p');
-        var linkInfo = this.getLinkPage();
-        console.log(headingElement, pElement, linkInfo);
+        let headings = this.parseHeadingElements();
+        let p = this.getTextElementsByTag('p');
+        let linkInfo = this.getLinkPage();
+        return [headings, p, linkInfo];
     }
     parseHeadingElements() {
     	let Headings = {};
     	for (let i = 6; i >= 1; i--) {
-    		let hLength = this.htmlBody.getElementsByTagName('h' + i).length;
     		Headings['h' + i] = this.getTextElementsByTag('h' + i);
     	}
     	return Headings;
