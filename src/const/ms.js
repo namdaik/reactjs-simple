@@ -1,0 +1,1 @@
+export const DISLAY_MS = "DISLAY_MS";

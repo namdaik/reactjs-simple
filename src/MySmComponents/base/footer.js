@@ -9,9 +9,7 @@ const SmFooter = (props) => {
         <div class="footer">
             <div class="powered-link text-center">
                 <p>
-                    <a href={props.settings.tiny_path}>
-                        {props.settings.tiny_path}
-                    </a>
+                   
                 </p>
             </div>
         </div>

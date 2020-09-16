@@ -1,4 +1,5 @@
-import callApi from './../utils/apiCaller';
+import callApi from './../module/api-call/apiCaller';
+import FakeContentUrl from './../module/fake-content/FakeContentUrl';
 
 export const actFetchSmRequest = () => {
     return dispatch => {
@@ -31,11 +32,13 @@ export const actDeleteProduct = (id) => {
 }
 
 export const actGetUrlMySmRequest = (path) => {
-    return dispatch => {
-        return callApi(path, 'GET', ).then(res => {
+    return function (dispatch) {
+        var fakeContent = new FakeContentUrl();
+         return fakeContent.parseAll().then(res => {
+            console.log(res);
             dispatch({
                 type : 'GET_URL_MY_SM',
-                html
+                payload : res
             });
         });
     }

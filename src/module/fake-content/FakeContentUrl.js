@@ -1,7 +1,7 @@
 import ParseHtml from '../parse-html/ParseHtml';
 
 export default class FakeContentUrl {
-    headingFake = [];
+    heading = [];
     pElement = [];
     linkInfo = [];
     
@@ -13,7 +13,10 @@ export default class FakeContentUrl {
         partHtml1.parseAll().then(result => {
             var headings, p, linkInfo;
             [headings, p, linkInfo] = result;
-            this.fakeHeading(headings);
+            this.fakeHeading(linkInfo);
+            this.fakeP();
+            this.fakeLinkInfo();
+            return [this.heading, this.pElement, this.linkInfo];
         });
  	}
     fakeHeading(headings) {
@@ -25,17 +28,12 @@ export default class FakeContentUrl {
             });
             headingFake[htag] = arrayH;
         }
-        this.headingFake = headingFake;
+        this.heading = headingFake;
     }
-    fakeP(headings) {
-        let headingFake = {} 
-        for (const htag in headings) {
-            var arrayH = [];
-            headings[htag].forEach(itemdata => {
-                arrayH.push(itemdata);
-            });
-            headingFake[htag] = arrayH;
-        }
-        this.headingFake = headingFake;
+    fakeP(pElement) {
+        this.pElement = pElement;
+    }
+    fakeLinkInfo(linkInfo) {
+        this.linkInfo = linkInfo;
     }
 }

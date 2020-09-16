@@ -7,6 +7,7 @@ import Robot2 from '../units/Robot2';
 import TextLinkGray from '../units/TextLinkGray';
 import Breadcrumb from '../units/Breadcrumb';
 import FakeContentUrl from '../../module/fake-content/FakeContentUrl';
+import {actGetUrlMySmRequest} from '../../actions/mySm';
 
 class UrlContinue extends Component {
     constructor(props) {
@@ -15,8 +16,7 @@ class UrlContinue extends Component {
      }
 
     componentDidMount() {
-        var fakeContent = new FakeContentUrl();
-        fakeContent.parseAll();
+        this.props.actGetUrlMySmRequest();
     }
 
     renderHeadings(Heading) {
@@ -49,4 +49,4 @@ const mapDispatchToProps = (dispatch) =>  {
 }
  
 
-export default connect(null, mapDispatchToProps)(UrlContinue);
+export default connect(null, {actGetUrlMySmRequest})(UrlContinue);
