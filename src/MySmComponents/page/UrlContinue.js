@@ -20,6 +20,9 @@ class UrlContinue extends Component {
     }
 
     renderHeadings(Heading) {
+        setTimeout(()=> {
+            console.log(this, 5);
+        }, 8000);
         if (!this.props[Heading]){
             return '';
         }
@@ -43,10 +46,17 @@ class UrlContinue extends Component {
         );
     }
 }
-
-//Gán dispatch thành props
-const mapDispatchToProps = (dispatch) =>  {
+function mapStateToProps(state) {
+    console.log(state,1313);
+    return {
+        mysm : state
+    };
 }
- 
+// const mapStateToProps = state => {
+//     console.log(state,44);
+//     return {
+//         mysm : state.mysm
+//     }
+// }
 
-export default connect(null, {actGetUrlMySmRequest})(UrlContinue);
+export default connect(mapStateToProps, {actGetUrlMySmRequest})(UrlContinue);

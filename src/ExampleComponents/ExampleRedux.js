@@ -6,7 +6,7 @@ import {actAddNote} from '../actions/index';
 
 function ExampleRedux(props) {
   const [note, setNote] = useState('namdaik');
- const handleSubmit = (e) =>{
+  const handleSubmit = (e) => {
   setNote('namdaik2');
     e.preventDefault();
    {

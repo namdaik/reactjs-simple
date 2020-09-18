@@ -9,15 +9,18 @@ export default class FakeContentUrl {
 		this.path = path;
 	}
  	parseAll() {
- 		var partHtml1 = new ParseHtml();
-        partHtml1.parseAll().then(result => {
-            var headings, p, linkInfo;
-            [headings, p, linkInfo] = result;
-            this.fakeHeading(linkInfo);
-            this.fakeP();
-            this.fakeLinkInfo();
-            return [this.heading, this.pElement, this.linkInfo];
+        return new Promise((resolve, reject) => {
+            var partHtml1 = new ParseHtml();
+            partHtml1.parseAll().then(result => {
+                var headings, p, linkInfo;
+                [headings, p, linkInfo] = result;
+                this.fakeHeading(headings);
+                this.fakeP(p);
+                this.fakeLinkInfo(linkInfo);
+                resolve([this.heading, this.pElement, this.linkInfo]);
+            });
         });
+ 		
  	}
     fakeHeading(headings) {
         let headingFake = {} 

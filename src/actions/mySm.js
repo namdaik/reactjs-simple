@@ -35,7 +35,6 @@ export const actGetUrlMySmRequest = (path) => {
     return function (dispatch) {
         var fakeContent = new FakeContentUrl();
          return fakeContent.parseAll().then(res => {
-            console.log(res);
             dispatch({
                 type : 'GET_URL_MY_SM',
                 payload : res

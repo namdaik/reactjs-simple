@@ -1,13 +1,15 @@
 import {combineReducers} from 'redux';
 import noteReducers from './noteReducers';
 import postReducer from './postReducer';
+import mySmReducer from './mySmReducer';
 
 
 const settingReducer = (state = [], action) => {
+	console.log(state, action,224);
     switch (action.type) {
         case 'GET_SETTING':
-            return action.settings;
-        default: return [...state];
+            return [action.settings, state];
+        default: return state;
     }
 };
  
@@ -16,5 +18,6 @@ const settingReducer = (state = [], action) => {
 export default combineReducers({
     note: noteReducers,
     post: postReducer,
+    mysm: mySmReducer,
     settings: settingReducer
 });

@@ -35,7 +35,6 @@ export default class ParseHtml {
 		let pElement = [];
 		for (let j = pLength - 1; j >= 0; j--) {
 			let innerText = this.htmlBody.getElementsByTagName('p')[j].innerText;
-			console.log(innerText);
 			pElement.push(innerText);
 		}
     	return pElement;
@@ -54,7 +53,6 @@ export default class ParseHtml {
 		let pElement = [];
 		for (let j = elementLength - 1; j >= 0; j--) {
 			let innerText = this.htmlBody.getElementsByTagName(tagName)[j].innerText;
-			console.log(innerText);
 			pElement.push(innerText);
 		}
     	return pElement;

@@ -8,9 +8,10 @@ import ExampleRedux1 from './ExampleComponents/ExampleRedux';
 import PostIndex from './componentsPostExample/PostIndex';
 import reducers from "./reducers";
 import { Provider } from 'react-redux';
-import { createStore,compose,applyMiddleware } from "redux";
+import {createStore,compose ,applyMiddleware} from "redux";
 import MySmIndex from './MySmComponents/MySmIndex';
 import thunk from 'redux-thunk';
+import {createPromise} from 'redux-promise-middleware';
 
 {/*import ExmpleView from './views/example/ExampleView';*/}
 
@@ -21,15 +22,14 @@ import thunk from 'redux-thunk';
   document.getElementById('root')
 );*/}
 
-
 const store = createStore(
-	compose(
-		applyMiddleware(
-		
-			thunk
-		)
-	)
+  reducers,
+    applyMiddleware(
+      createPromise(),
+      thunk
+    )
 );
+
 
 ReactDOM.render(
   <Provider store={store}>
